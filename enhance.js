@@ -117,12 +117,27 @@
 		cookie( fullCSSKey, "true", 7 );
 	}
 
+	/* Check if the browser qualifies as a "Cutting the Mustard" browser.
+		More about CTM here: http://responsivenews.co.uk/post/18948466399/cutting-the-mustard
+		*/
+	function ctm() {
+		if("querySelector" in doc && "localStorage" in window && "addEventListener" in window ) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	// expose it
+	enhance.ctm = ctm;
+
 	/* Enhancements for qualified browsers - “Cutting the Mustard”
 		Add your qualifications for major browser experience divisions here.
 		For example, you might choose to only enhance browsers that support document.querySelector (IE8+, etc).
 		Use case will vary.
 		*/
-	if( !( "querySelector" in doc ) ){
+	if( !( ctm() ) ){
 		// basic browsers: last stop here!
 		return;
 	}
