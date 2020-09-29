@@ -120,7 +120,7 @@
 			else {
 				expires = "";
 			}
-			window.document.cookie = name + "=" + value + expires + "; path=/";
+			window.document.cookie = name + "=" + value + expires + "; path=/; SameSite=Lax";
 		}
 	}
 
